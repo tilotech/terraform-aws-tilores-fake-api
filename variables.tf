@@ -1,8 +1,3 @@
-variable "region" {
-  type        = string
-  description = "The AWS region in which to deploy the API"
-}
-
 variable "resource_prefix" {
   type        = string
   description = "The text every created resource will be prefixed with."

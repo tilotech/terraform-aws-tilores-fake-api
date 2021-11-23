@@ -15,7 +15,6 @@ tilores-cli deploy fake-api
 module "tilores" {
   source = "tilotech/tilores-fake-api/aws"
 
-  region          = "eu-west-1"
   resource_prefix = "mycompany-dev"
   api_file        = "path/to/api.zip"
   dispatcher_file = "path/to/dispatcher.zip"
