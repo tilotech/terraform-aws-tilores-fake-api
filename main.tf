@@ -48,6 +48,20 @@ module "api_gateway" {
     "POST /" = {
       lambda_arn             = module.lambda_api.lambda_function_arn
       payload_format_version = "1.0"
+      authorization_type     = "JWT"
+      authorizer_id          = aws_apigatewayv2_authorizer.api_authorizer.id
     }
+  }
+}
+
+resource "aws_apigatewayv2_authorizer" "api_authorizer" {
+  api_id           = module.api_gateway.apigatewayv2_api_id
+  authorizer_type  = "JWT"
+  identity_sources = ["$request.header.Authorization"]
+  name             = format("%s-authorizer", local.prefix)
+
+  jwt_configuration {
+    audience = var.authorizer_audience
+    issuer   = var.authorizer_issuer_url
   }
 }
