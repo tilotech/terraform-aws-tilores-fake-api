@@ -10,7 +10,7 @@ module "lambda_api" {
   local_existing_package = var.api_file
 
   environment_variables = {
-    DISPATCHER_PLUGIN_PATH : "/opt/tilores-plugin-fake-dispatcher"
+    DISPATCHER_PLUGIN_PATH = "/opt/tilores-plugin-fake-dispatcher"
   }
 
   layers = [
