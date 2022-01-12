@@ -4,7 +4,8 @@ module "lambda_api" {
   function_name = format("%s-api", local.prefix)
   description   = "TiloRes Fake API"
   handler       = "api"
-  runtime       = "go1.x"
+  runtime       = "provided.al2"
+  architectures = ["arm64"]
 
   create_package         = false
   local_existing_package = var.api_file
@@ -31,9 +32,10 @@ module "lambda_layer_dispatcher_plugin" {
 
   create_layer = true
 
-  layer_name          = format("%s-dispatcher-plugin", local.prefix)
-  description         = "TiloRes Fake API Dispatcher Plugin"
-  compatible_runtimes = ["go1.x"]
+  layer_name               = format("%s-dispatcher-plugin", local.prefix)
+  description              = "TiloRes Fake API Dispatcher Plugin"
+  compatible_runtimes      = ["provided.al2"]
+  compatible_architectures = ["arm64"]
 
   create_package         = false
   local_existing_package = var.dispatcher_file
