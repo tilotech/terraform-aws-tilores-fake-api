@@ -1,5 +1,6 @@
 module "lambda_api" {
-  source = "terraform-aws-modules/lambda/aws"
+  source  = "terraform-aws-modules/lambda/aws"
+  version = "2.36.0"
 
   function_name = format("%s-api", local.prefix)
   description   = "TiloRes Fake API"
@@ -28,7 +29,8 @@ module "lambda_api" {
 }
 
 module "lambda_layer_dispatcher_plugin" {
-  source = "terraform-aws-modules/lambda/aws"
+  source  = "terraform-aws-modules/lambda/aws"
+  version = "2.36.0"
 
   create_layer = true
 
@@ -42,7 +44,8 @@ module "lambda_layer_dispatcher_plugin" {
 }
 
 module "api_gateway" {
-  source = "terraform-aws-modules/apigateway-v2/aws"
+  source  = "terraform-aws-modules/apigateway-v2/aws"
+  version = "1.6.0"
 
   name          = format("%s-api", local.prefix)
   description   = "TiloRes Fake API Gateway"
